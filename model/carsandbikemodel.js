@@ -43,7 +43,11 @@ fastcharge_kmh: {
     required: true
 },
 priceEuro: {
-    type: Number,
+    type: String,
+    required: true
+},
+priceSouthAfricanRand: {
+    type: String,
     required: true
 },
 rapidcharge: {
@@ -63,13 +67,36 @@ bodystyle: {
     required: true
 },
 priceINR: {
+    type: String ,
+    required: true
+},
+picture_url:{
+    type: String,
+    required: true
+
+},
+
+pollutionDegree:{
+    type: String,
+    required: true
+},
+chargingTIme: {
     type: Number ,
     required: true
-}
+},
+
+topSpeedComp: {
+    type: Number ,
+    required: true
+},
+fuelCost: {
+    type: Number ,
+    required: true
+},
 
 })
 
-module.exports = Vehicle = mongoose.model('vehicles', vehicleSchema)
+module.exports = Vehicle = mongoose.model('trending_toprated', vehicleSchema)
 
 // {
 //     "brand": "Audi",
