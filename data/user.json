@@ -1,0 +1,27 @@
+[
+ {
+    "phone":"6379659221",
+    "vehicles":[
+        {
+            "brand": "Tesla",
+            "model": "Model 3 Long Range Dual Motor",
+            "accelsec": 4.6,
+            "topspeed_km": 233,
+            "range_km": 460,
+            "battery_pack_kwh": 70,
+            "rfficiency_whkm": 161,
+            "fastcharge_kmh": 940,
+            "rapidcharge": "Yes",
+            "powertrain": "AWD",
+            "plugtype": "Type 2 CCS",
+            "bodystyle": "Sedan",
+            "segment": "D",
+            "seats": 5,
+            "priceEuro": 55480,
+            "priceINR": 4627849.646
+           }
+    ]
+ } 
+ 
+ 
+]

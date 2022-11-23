@@ -6,9 +6,11 @@ dotenv.config();
 const app = express();
 const path = require('path')
 const favicon = require('serve-favicon')
-const data = require('./data/ev_data.json');
+const data = require('./data/user.json');
 const bodyParser = require('body-parser')
 const Vehicle = require('./model/carsandbikemodel')
+const User = require('./model/usermodel')
+
 
 const corsOptions ={
     origin:'http://localhost:3000', 
@@ -43,19 +45,31 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use(bodyParser.json())
 
 
-app.route('/postcar').get((req,res) =>{
-     let newCar = new Vehicle(req.body)
+// app.route('/postcar').get((req,res) =>{
+//      let newCar = new Vehicle(req.body)
    
-    Vehicle.find({},(err,vehi) => {
-        if(err){
-            res.send(err)
-        }
-        res.json(vehi)
-    })
+//     Vehicle.find({},(err,vehi) => {
+//         if(err){
+//             res.send(err)
+//         }
+//         res.json(vehi)
+//     })
+// })
+
+
+app.route('/user').get((req,res) =>{
+    
+  
+   User.find({},(err,u) => {
+       if(err){
+           res.send(err)
+       }
+       res.json(u)
+   })
 })
 
-app.route('/postcar').post((req,res) =>{
-    let newCar = new Vehicle(req.body)
+app.route('/user').post((req,res) =>{
+    let newCar = new User(req.body)
   
    newCar.save({},(err,vehi) => {
        if(err){
@@ -64,6 +78,45 @@ app.route('/postcar').post((req,res) =>{
        res.json(vehi)
    })
 })
+
+app.route('/searchuser').get((req,res) =>{
+    const searchField = req.query.mobile;
+    
+      User.find(
+        {
+            mobile:{$regex:searchField,$options:'$i'}
+        
+        }
+        
+        ).then(data => {
+        res.send(data)
+      })
+})
+
+// app.route('/search').get((req,res) =>{
+//     const searchField = req.query.brand;
+    
+//       Vehicle.find(
+//         {
+//             brand:{$regex:searchField,$options:'$i'}
+        
+//         }
+        
+//         ).then(data => {
+//         res.send(data)
+//       })
+// })
+
+// app.route('/postcar').post((req,res) =>{
+//     let newCar = new Vehicle(req.body)
+  
+//    newCar.save({},(err,vehi) => {
+//        if(err){
+//            res.send(err)
+//        }
+//        res.json(vehi)
+//    })
+// })
 
 
 db();
