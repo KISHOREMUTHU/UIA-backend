@@ -54,6 +54,12 @@ app.route('/postcar').get((req,res) =>{
     })
 })
 
+app.route('/searchcar').get((req,res) =>{
+    let value = req.query.brand;
+  
+   Vehicle.find({brand:{$regex:value}}).then(data => res.send(data))
+})
+
 app.route('/postcar').post((req,res) =>{
     let newCar = new Vehicle(req.body)
   
