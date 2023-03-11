@@ -96,7 +96,7 @@ fuelCost: {
 
 })
 
-module.exports = Vehicle = mongoose.model('trending_only', vehicleSchema)
+module.exports = Vehicle = mongoose.model('trending_toprateds', vehicleSchema)
 
 // {
 //     "brand": "Audi",
